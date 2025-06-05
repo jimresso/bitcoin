@@ -23,7 +23,7 @@ public class RedisConfig {
   @Bean
   public ReactiveRedisTemplate<String, ExchangeRate> reactiveRedisTemplate(
           ReactiveRedisConnectionFactory factory,
-          ObjectMapper objectMapper  // tu ObjectMapper ya “customizado” con JavaTimeModule
+          ObjectMapper objectMapper
   ) {
     StringRedisSerializer keySer = new StringRedisSerializer();
     Jackson2JsonRedisSerializer valSer =
