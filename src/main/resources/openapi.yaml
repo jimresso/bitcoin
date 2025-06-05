@@ -1,0 +1,45 @@
+openapi: 3.0.1
+info:
+  description: API para el registro y operaciones de BootCoin
+  title: BootCoin Service
+  version: 1.0.0
+servers:
+  - url: /bootcoin
+paths:
+  /register:
+    post:
+      summary: Registrar monedero BootCoin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BootCoinWallet'
+      responses:
+        '201':
+          description: Monedero creado
+        '400':
+          description: Wallet ya existe
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    BootCoinWallet:
+      type: object
+      required:
+        - docType
+        - docNumber
+        - phoneNumber
+        - email
+      properties:
+        id:
+          type: string
+        docType:
+          type: string
+          enum: [DNI, CEX, PASAPORTE]
+        docNumber:
+          type: string
+        phoneNumber:
+          type: string
+        email:
+          type: string
